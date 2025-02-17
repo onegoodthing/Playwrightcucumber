@@ -5,8 +5,12 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "stepdefinitions",
-        plugin = {"pretty"} // prints Gherkin steps in console
+        glue = {"stepdefinitions"},
+        plugin = {
+                "pretty",
+                "html:target/cucumber.html"      // <--- generate an HTML report
+                // "summary" is optional or any other plugin you like
+        }
 )
 public class CucumberTest {
 }
