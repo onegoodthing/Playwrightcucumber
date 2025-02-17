@@ -18,7 +18,13 @@ public class ExampleSteps {
         page = browser.newPage();
         page.navigate("https://example.com");
     }
-
+    @Given("I open the {string}")
+    public void i_open_the(String url) {
+        playwright = Playwright.create();
+        browser = playwright.chromium().launch();
+        page = browser.newPage();
+        page.navigate(url);
+    }
     @Then("the title should be {string}")
     public void the_title_should_be(String expectedTitle) {
         String actualTitle = page.title();
